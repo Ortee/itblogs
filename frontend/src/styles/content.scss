@@ -1,0 +1,73 @@
+@import 'variables';
+
+#content {
+  margin-left: 2%;
+  width: 96%;
+  float: left;
+}
+#cards {
+  border-left: 1px solid $grey;
+  border-right: 1px solid $grey;
+  width: 70%;
+  float: left;
+  height: 100%;
+}
+#sidebar{
+  border: 1px solid orange;
+  width: 28%;
+  float: left;
+  margin-left: 2%
+}
+.card {
+  border-bottom: 1px solid $grey;
+  float: left;
+  width: 100%;
+  height: 100%;
+  a{
+    outline: none;
+    color: #000;
+    &:hover {
+      opacity: 0.5;
+      color: #000;
+    }
+  }
+  .image {
+    height: 100%;
+    width: 15%;
+    float: left;
+    padding: 10px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .description{
+    width: 85%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+    float: left;
+    float: left;
+    .title {
+      color: #c05b4d;
+      font-size: 2em;
+      weight: 700;
+      width: 100%;
+      float: left;
+    }
+    .author{
+      color: #c05b4d;
+      font-size: 1em;
+      weight: 700;
+      width: 100%;
+      float: left;
+    }
+    .time {
+      font-size: 1em;
+      weight: 700;
+      color: grey;
+      float: left;
+      width: 100%;
+    }
+  }
+}
