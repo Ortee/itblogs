@@ -1,6 +1,18 @@
 module.exports = [
-  'http://jsdn.pl/feed/',
-  'http://feeds.feedburner.com/jakubg',
-  'http://feeds.feedburner.com/maciejaniserowicz',
-  'https://nafrontendzie.pl/feed/',
+  {
+    link: 'http://jsdn.pl/feed/',
+    tags: ['javascript'],
+  },
+  {
+    link: 'http://feeds.feedburner.com/jakubg',
+    tags: ['ruby'],
+  },
+  {
+    link: 'http://feeds.feedburner.com/maciejaniserowicz',
+    tags: ['.net', 'daj się poznać'],
+  },
+  {
+    link: 'https://nafrontendzie.pl/feed/',
+    tags: ['javascript', 'frontend'],
+  },
 ];

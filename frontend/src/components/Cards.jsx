@@ -1,20 +1,60 @@
 import React from 'react';
-import links from '../sites';
+import blogs from '../sites';
 
 class Cards extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      clickedText: '',
+    };
+    this.clickFilter = this.clickFilter.bind(this);
   }
+
   componentWillMount() {
-    links.map( link => {
-      this.props.fetchRSS(link);
+    blogs.map( blog => {
+      this.props.fetchRSS(blog);
+    });
+  }
+
+  clickFilter(text) {
+    this.setState({
+      clickedText: text
     });
   }
 
   render() {
     return (
       <div id="cards">
-      {this.props.cards.map((post, index) => {
+        <div id="filters">
+          <Filter onClick={this.clickFilter.bind(this, 'javascript')} text="Javascript"/>
+          <Filter onClick={this.clickFilter.bind(this, 'frontend')} text="Frontend"/>
+          <Filter onClick={this.clickFilter.bind(this, '.net')} text=".NET"/>
+          <Filter onClick={this.clickFilter.bind(this, 'ruby')} text="Ruby"/>
+          <Filter onClick={this.clickFilter.bind(this, 'daj się poznać')} text="Daj się poznać"/>
+        </div>
+        <CardsList cards={this.props.cards} clickedText={this.state.clickedText}/>
+      </div>
+    );
+  }
+}
+
+const Filter = (props) => (
+  <button onClick={() => {props.onClick();}}>{props.text}</button>
+);
+
+
+class CardsList extends React.Component {
+
+  render() {
+    var rows = [];
+    console.log(this.props.clickedText);
+    this.props.cards.map( (post, index) => {
+      if(post.tags.indexOf(this.props.clickedText) !== -1 || this.props.clickedText === '') {
+        rows.push(post);
+      }
+    });
+    return (
+      <div>{rows.map((post, index) => {
         return (
           <Card
             key={index}
@@ -24,10 +64,10 @@ class Cards extends React.Component {
             link={post.link}
             date={post.date}
             />);
-      })}
-      </div>
+      })}</div>
     );
   }
+
 }
 
 const Card = (props) => (

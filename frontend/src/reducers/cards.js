@@ -7,6 +7,7 @@ function cards(state = [], action) {
       author: action.post.author,
       date: action.post.date,
       description: action.post.description,
+      tags: action.blog.tags,
     }];
   default:
     return state;

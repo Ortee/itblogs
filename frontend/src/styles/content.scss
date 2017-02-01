@@ -4,19 +4,35 @@
   margin-left: 2%;
   width: 96%;
   float: left;
+  margin-top: -5%;
 }
 #cards {
+  #filters{
+    button {
+      width: 20%;
+      border: none;
+      border-right: 1px solid $grey;
+      border-left: 1px solid $grey;
+      border-bottom: 1px solid $grey;
+      font-size: 18px;
+      font-weight: 300;
+      color: #000;
+      height: 50px;
+      background: #fff;
+      outline: none;
+      box-shadow: none;
+      cursor: pointer;
+      &:hover{
+        background-color: $grey;
+      }
+    }
+  }
   border-left: 1px solid $grey;
   border-right: 1px solid $grey;
   width: 70%;
   float: left;
   height: 100%;
-}
-#sidebar{
-  border: 1px solid orange;
-  width: 28%;
-  float: left;
-  margin-left: 2%
+  background-color: $cardColor;
 }
 .card {
   border-bottom: 1px solid $grey;
@@ -36,6 +52,7 @@
     width: 15%;
     float: left;
     padding: 10px;
+    text-align: center;
     img {
       width: 100px;
       height: 100px;
