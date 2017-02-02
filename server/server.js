@@ -1,7 +1,7 @@
 var request = require("request");
 var express = require('express');
 var parseString = require('xml2js').parseString;
-var date = require('./date.js');
+var replace = require('./replace.js');
 var app = express();
 
 app.use(function(req, res, next) {
@@ -10,9 +10,8 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
   next();
 });
-console.log(date.getTimeDiff("Fri, 27 Jan 2017 19:50:25 +0000"));
+
 app.get('/api/posts', function (req, res) {
-  console.log("req.query", req.query.link)
   request({
     uri: req.query.link,
     method: "GET",
@@ -21,18 +20,19 @@ app.get('/api/posts', function (req, res) {
     maxRedirects: 10
   }, function(error, response, body) {
     parseString(body, function (err, result) {
-        var reqbody = result.rss.channel[0]
+        var reqbody = result.rss.channel[0];
         var posts = [];
         reqbody.item.map( post => {
           posts.push({
             author: reqbody.title,
+            author: reqbody.title,
             title: post.title,
             link: post.link,
-            date: date.getTimeDiff(post.pubDate),
-            description: post.description,
+            date: new Date(post.pubDate).getTime(),
+            description: replace(post.description.toString()),
           })
         });
-        res.send(posts)
+        res.send(posts).status(200);
     });
   });
 })

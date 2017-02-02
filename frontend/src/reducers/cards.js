@@ -3,6 +3,7 @@ function cards(state = [], action) {
   case 'ADD_CARD':
     return [...state, {
       title: action.post.title,
+      photo: action.blog.image,
       link: action.post.link,
       author: action.post.author,
       date: action.post.date,

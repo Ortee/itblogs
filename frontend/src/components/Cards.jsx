@@ -1,5 +1,6 @@
 import React from 'react';
 import blogs from '../sites';
+import date from '../utils/date.js';
 
 class Cards extends React.Component {
   constructor(props) {
@@ -26,6 +27,13 @@ class Cards extends React.Component {
     return (
       <div id="cards">
         <div id="filters">
+          <Filter onClick={this.clickFilter.bind(this, '')} text="Wszystko"/>
+          <Filter onClick={this.clickFilter.bind(this, 'biznes')} text="Biznes"/>
+          <Filter onClick={this.clickFilter.bind(this, 'algorytmy')} text="Algorytmy"/>
+          <Filter onClick={this.clickFilter.bind(this, '')} text="3"/>
+          <Filter onClick={this.clickFilter.bind(this, '')} text="4"/>
+        </div>
+        <div id="filters">
           <Filter onClick={this.clickFilter.bind(this, 'javascript')} text="Javascript"/>
           <Filter onClick={this.clickFilter.bind(this, 'frontend')} text="Frontend"/>
           <Filter onClick={this.clickFilter.bind(this, '.net')} text=".NET"/>
@@ -47,12 +55,12 @@ class CardsList extends React.Component {
 
   render() {
     var rows = [];
-    console.log(this.props.clickedText);
     this.props.cards.map( (post, index) => {
       if(post.tags.indexOf(this.props.clickedText) !== -1 || this.props.clickedText === '') {
         rows.push(post);
       }
     });
+    rows.sort((a, b)=>{return  b.date - a.date});
     return (
       <div>{rows.map((post, index) => {
         return (
@@ -62,7 +70,8 @@ class CardsList extends React.Component {
             author={post.author}
             description={post.description}
             link={post.link}
-            date={post.date}
+            date={date.getTimeDiff(post.date)}
+            photo={post.photo}
             />);
       })}</div>
     );
@@ -74,7 +83,7 @@ const Card = (props) => (
   <div className="card">
     <a href={props.link}>
       <div className="image">
-        <img src="http://downloadicons.net/sites/default/files/messages-icon-64932.png" />
+        <img src={props.photo} />
       </div>
       <div className="description">
         <span className="author">{props.author}</span>
