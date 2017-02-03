@@ -20,16 +20,16 @@ app.get('/api/posts', function (req, res) {
     maxRedirects: 10
   }, function(error, response, body) {
     parseString(body, function (err, result) {
+        console.log(req.query.link);
         var reqbody = result.rss.channel[0];
         var posts = [];
         reqbody.item.map( post => {
           posts.push({
             author: reqbody.title,
-            author: reqbody.title,
             title: post.title,
             link: post.link,
             date: new Date(post.pubDate).getTime(),
-            description: replace(post.description.toString()),
+            description: replace(post.description.toString()).substr(0, 500),
           })
         });
         res.send(posts).status(200);

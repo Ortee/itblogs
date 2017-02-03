@@ -36,7 +36,7 @@ class Cards extends React.Component {
         <div id="filters">
           <Filter onClick={this.clickFilter.bind(this, 'javascript')} text="Javascript"/>
           <Filter onClick={this.clickFilter.bind(this, 'frontend')} text="Frontend"/>
-          <Filter onClick={this.clickFilter.bind(this, '.net')} text=".NET"/>
+          <Filter onClick={this.clickFilter.bind(this, 'c#')} text="C#"/>
           <Filter onClick={this.clickFilter.bind(this, 'ruby')} text="Ruby"/>
           <Filter onClick={this.clickFilter.bind(this, 'daj się poznać')} text="Daj się poznać"/>
         </div>
