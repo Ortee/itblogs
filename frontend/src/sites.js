@@ -39,4 +39,14 @@ module.exports = [
     tags: ['c#', 'daj się poznać'],
     image: 'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/61373_147577621945734_6291340_n.jpg?oh=4fbb21e83c9da80dc09846ba2ee0ad2d&oe=5942D130',
   },
+  {
+    link: 'http://feeds.feedburner.com/devtalk_pl',
+    tags: ['c#', 'daj się poznać'],
+    image: 'https://i.ytimg.com/vi/tVXJImeT1mw/maxresdefault.jpg',
+  },
+  {
+    link: 'https://wojciszko.com/feed/',
+    tags: [''],
+    image: 'https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/12369261_1060620480638718_8484383861759811300_n.jpg?oh=5dad076f638d667f7625cd83278eacd1&oe=5902148F',
+  },
 ];
